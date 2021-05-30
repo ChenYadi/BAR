@@ -1,8 +1,8 @@
-%% Áë»Ø¹é(Ridge Regression)
+%% å²­å›žå½’(Ridge Regression)
 
-%µ¼ÈëÊý¾Ý 
+%å¯¼å…¥æ•°æ® 
 load X.mat;load y.mat;
-%±ê×¼»¯
+%æ ‡å‡†åŒ–
 yMeans = mean(y);
 for i = 1:m
     yMat(i,:) = Y(i,:)-yMeans;
@@ -14,7 +14,7 @@ for i = 1:m
     xMat(i,:) = (X(i,:) - xMeans)./xVars;
 end
 
-% ÔËËã30´Î
+% è¿ç®—30æ¬¡
 testNum = 30;
 weights = zeros(testNum, n-1);
 for i = 1:testNum
@@ -22,7 +22,7 @@ for i = 1:testNum
     weights(i,:) = w';
 end
 
-% »­³öËæ×Å²ÎÊýlam
+% ç”»å‡ºéšç€å‚æ•°lam
 hold on
 axis([-9 20 -1.0 2.5]);
 xlabel log(lam);
@@ -40,12 +40,12 @@ end
     if det(temp) == 0
         disp('This matrix is singular, cannot do inverse');
     end
-    betaridge= temp^(-1)*X'*y;
+    betaridge= temp^(-1)*X'*y; 
 
 
  h=X'*y;
  g=X'*X;
-betaols=g\h;% %OLSµÃµ½µÄÏµÊý
+betaols=g\h;% %OLSå¾—åˆ°çš„ç³»æ•°
 
 betaupdate = ((betaridge.^ 2) ./ ((betaridge .^2) + (0.0001 / 100).*ones(6,1))) .* betaols;
 while (abs(betaupdate-betaridge)>=0.01 )
