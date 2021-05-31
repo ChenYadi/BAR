@@ -51,8 +51,7 @@ betaupdate = ((betaridge.^ 2) ./ ((betaridge .^2) + (0.0001 / 100).*ones(6,1))) 
 while (abs(betaupdate-betaridge)>=0.01 )
  betaupdate = ((betaupdate.^ 2) / ((betaupdate .^2) + (0.0001 / 100).*ones(6,1))) * betaols;
  end
+ %%%%%%%calculate correlations
  r1=corr(X*betaols,y,'type','pearson');
  r2=corr(X*w,y,'type','pearson');
- r3=corr(X*betaupdate,y,'type','pearson');
-       
- 
+ r3=corr(X*betaupdate,y,'type','pearson'); 
